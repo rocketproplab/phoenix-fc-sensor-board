@@ -20,14 +20,6 @@
 #define EthernetCS 10
 #define SDCS 40
 
-/* Set and print ambient resolution */
-Ambient_Resolution ambientRes1 = RES_ZERO_POINT_0625;
-Ambient_Resolution ambientRes2 = RES_ZERO_POINT_0625;
-Ambient_Resolution ambientRes3 = RES_ZERO_POINT_0625;
-Ambient_Resolution ambientRes4 = RES_ZERO_POINT_0625;
-Ambient_Resolution ambientRes5 = RES_ZERO_POINT_0625;
-
-#include "src/valve/valve.h"
 #include "src/pt/pt.h"
 // ─────────────────────────────────────────────────────────────────────────────
 // Ethernet (MAC‑RAW)
@@ -38,10 +30,6 @@ uint8_t buffer[500];
 // first byte 0x02 = locally‑administered, unicast
 const uint8_t MAC_GROUND_STATION[6] = {0x02, 0x47, 0x53,
                                        0x00, 0x00, 0x01}; // GS:  ground station
-const uint8_t MAC_RELIEF_VALVE[6] = {0x02, 0x52, 0x56,
-                                     0x00, 0x00, 0x02}; // RV:  relief valve
-const uint8_t MAC_FLOW_VALVE[6] = {0x02, 0x46, 0x4C,
-                                   0x00, 0x00, 0x03}; // FL:  flow valve
 const uint8_t MAC_SENSOR_GIGA[6] = {0x02, 0x53, 0x49,
                                     0x00, 0x00, 0x04}; // SI:  sensor interface
 
@@ -87,8 +75,6 @@ void sendSensorData() {
   // Put all data into an output string to be sent over
   // String
   // dataOut=String(PT1)+","+String(PT2)+","+String(PT3)+","+String(PT4)+","+String(PT5);
-  // String
-  // dataOut=String(loadOutput1)+","+String(loadOutput2)+","+String(loadOutput3)+","+String(thermoCouple1)+","+String(thermoCouple2);
 
   String dataOut;
 
@@ -98,16 +84,6 @@ void sendSensorData() {
     if (ptID > 0) dataOut += ",";
     dataOut += String(val);
   }
-
-  dataOut = dataOut + ","
-    + String(loadOutput1) + ","
-    + String(loadOutput2) + ","
-    + String(loadOutput3) + ","
-    + String(thermoCouple1) + ","
-    + String(thermoCouple2) + ","
-    + String(thermoCouple3) + ","
-    + String(thermoCouple4) + ","
-    + String(thermoCouple5);
 
   Serial.println(dataOut);
 
