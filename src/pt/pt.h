@@ -9,8 +9,8 @@ struct PT {
   double      range; // "pressure range, 0 ~ <range> psi"
   double      voltageMin; // "V at 0 psi"
   double      voltageMax; // "V at <range> psi"
-  double      analogRange; // "ADC range (0~1023 for Arduino, so 1023)"
-  double      voltageRange; // "ADC full voltage (0~5V for Arduino, so 5)"
+  double      analogRange; // "ADC range (0-4095 for ESP 32, so 4095)"
+  double      voltageRange; // "ADC full voltage (0-3.3V for ESP 32, so 3.3)"
 };
 
 // Initialize PT state
