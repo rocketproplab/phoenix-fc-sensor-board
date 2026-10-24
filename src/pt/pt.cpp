@@ -11,6 +11,7 @@ static PT pts[] = {
   { "LNG-DOME",       A1,   1500.0, 0.5,        4.5,        4095.0,       3.3 },
 };
 
+// All PTs divided by one PT
 static const size_t NUM_PTS = sizeof(pts) / sizeof(pts[0]);
 
 // quick sanity check
@@ -37,6 +38,7 @@ const PT* getPTInfo(uint8_t id) {
   return &pts[id];
 }
 
+// Note: 0.0 appears to indicate an error.
 double readPT(uint8_t id) {
   if (!valid(id)) return 0.0;
   const PT& p = pts[id];
