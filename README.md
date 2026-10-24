@@ -118,6 +118,8 @@ To add/modify existing PTs, edit the configuration in `src/pt/` and the main fli
 
 # Physical Specification
 ## MCU
-Arduino Mega 2560
+ESP32-MINI-1 (ESP32-U4WDH)
+
+It's worth noting that this is an Xtensa core, not a RISC-V one
 ## Ethernet
 [W5500 Ethernet LAN Network Module](https://www.amazon.com/HiLetgo-Ethernet-Network-Support-Microcontroller/dp/B0CDWX9VQ5)
